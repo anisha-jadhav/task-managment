@@ -21,7 +21,8 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body>
+  <body onload="loadInitialData()">
+    <!--btn for mobile scrren-->
     <div class="add__new__btn__mobile__only">
       <button
         class="btn btn-primary d-flex align-items-center gap-2"
@@ -32,6 +33,7 @@
         <i class="fa-solid fa-plus addon__icon"></i>Add item
       </button>
     </div>
+
     <!-- Modal -->
     <div
       class="modal fade"
@@ -51,7 +53,94 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">Do you want to save the new task?</div>
+          <div class="modal-body">
+            <form onsubmit="return false">
+              <div class="mb-3">
+                <label for="imageUrl" class="form-label">Image URL</label>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="imageUrl"
+                  placeholder="http://example.com/image.png"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="taskTitle" class="form-label">Task Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="taskTitle"
+                  placeholder="Add title of task here"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="tags" class="form-label">Task Type</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="tags"
+                  placeholder="work..."
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="taskDesc" class="form-label"
+                  >Task Description</label
+                >
+                <textarea
+                  class="form-control"
+                  id="taskDesc"
+                  placeholder="Explain something about it..."
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                type="button"
+                class="btn btn-primary"
+                onclick="handleSubmit()"
+              >
+                Save changes
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for show task-->
+    <div
+      class="modal fade"
+      id="showTask"
+      tabindex="-1"
+      aria-labelledby="showTaskLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title" id="showTaskLabel">Task Details</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body task__modal__body"></div>
           <div class="modal-footer">
             <button
               type="button"
@@ -60,7 +149,6 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
@@ -123,7 +211,7 @@
 
       <!--Show Tasks-->
       <section class="mt-4">
-        <div class="row task__container">
+        <div class="row task__contents">
           <h1>This place will show tasks</h1>
         </div>
       </section>
