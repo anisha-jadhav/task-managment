@@ -22,7 +22,52 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="add__new__btn__mobile__only">
+      <button
+        class="btn btn-primary d-flex align-items-center gap-2"
+        data-bs-toggle="modal"
+        data-bs-target="#addNewModal"
+        type="submit"
+      >
+        <i class="fa-solid fa-plus addon__icon"></i>Add item
+      </button>
+    </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="addNewModal"
+      tabindex="-1"
+      aria-labelledby="addNewModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="addNewModalLabel">Add New Task</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Do you want to save the new task?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Nav Bar-->
+    <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
         <button
@@ -37,19 +82,52 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <ul class="navbar-nav me-auto">
+            <li class="nav-items">
+              <a href="#" class="nav-link active" aria-current="page">Home</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <button class="btn btn-outline-success" type="submit">
-              <i class="fa-solid fa-plus"></i>Add item
-            </button>
-          </form>
+          <!--add new item button-->
+          <button
+            class="btn btn-primary d-flex align-items-center gap-2"
+            data-bs-toggle="modal"
+            data-bs-target="#addNewModal"
+            type="submit"
+          >
+            <i class="fa-solid fa-plus addon__icon"></i>Add item
+          </button>
         </div>
       </div>
     </nav>
+
+    <div class="container">
+      <!--search container-->
+      <section class="mt-4">
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-lg-8">
+            <div class="input-group flex-nonwrap shadow-lg rounded">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Search Task..."
+                aria-label="Search Task"
+                aria-describedby="addon-wrapping"
+              />
+              <span class="input-group-text" id="addon-wrapper">
+                <i class="fas fa-search"> </i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--Show Tasks-->
+      <section class="mt-4">
+        <div class="row task__container">
+          <h1>This place will show tasks</h1>
+        </div>
+      </section>
+    </div>
 
     <script src="scripts/index.js"></script>
     <script
